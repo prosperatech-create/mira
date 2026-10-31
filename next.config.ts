@@ -1,16 +1,33 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
+/**
+ * MIRA é uma aplicação autenticada e 100% dinâmica (dados clínicos por usuária).
+ * Por isso Cache Components / pré-renderização parcial ficam desligados: nenhuma página
+ * com dados pessoais deve ser cacheada ou pré-renderizada.
+ */
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  poweredByHeader: false,
   turbopack: {
     rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
+      '*.css': {
+        loaders: ['@tailwindcss/turbopack'],
+        as: '*.css',
       },
     },
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'same-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          { key: 'Cache-Control', value: 'private, no-store' },
+        ],
+      },
+    ];
   },
 };
 

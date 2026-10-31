@@ -1,0 +1,16 @@
+# Configuração mínima do Supabase CLI (os demais valores usam os padrões do CLI).
+project_id = "mira"
+
+[db]
+major_version = 15
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[auth]
+site_url = "http://localhost:3000"
+enable_signup = false
+
+[auth.email]
+enable_confirmations = false
