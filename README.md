@@ -20,6 +20,7 @@ Stack: **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · 
 | 7 | [IA: prompts e guardrails](docs/07-ia-e-guardrails.md) |
 | 8 | [MVP](docs/08-mvp.md) |
 | 9 | [Estrutura do projeto](docs/09-estrutura-do-projeto.md) |
+| — | [Guia de instalação passo a passo (Supabase)](docs/10-guia-instalacao.md) |
 
 ## Rodando localmente
 
