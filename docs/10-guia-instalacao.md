@@ -112,3 +112,34 @@ ANTHROPIC_API_KEY=sua-chave
 ```
 
 Pare o servidor (Ctrl+C) e rode `npm run dev` de novo.
+
+## 8. Publicar com link próprio (Vercel) — sem precisar do computador ligado
+
+Pré-requisito: passos 1 a 4 feitos (Supabase pronto).
+
+1. No GitHub, abra o PR do MIRA e clique em **Merge pull request** (a Vercel publica o branch `main`).
+2. Entre em <https://vercel.com/signup> e escolha **Continue with GitHub**.
+3. **Add New… › Project** › em *Import Git Repository*, escolha `prosperatech-create/mira` (se não aparecer, clique em *Adjust GitHub App Permissions* e libere o repositório).
+4. A Vercel detecta **Next.js** sozinha. Abra **Environment Variables** e adicione:
+
+   | Nome | Valor |
+   |---|---|
+   | `NEXT_PUBLIC_SUPABASE_URL` | Project URL do Supabase |
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | anon public key |
+   | `MIRA_ENCRYPTION_KEY` | a mesma chave do `.env.local` (gerada com `openssl rand -base64 32`) |
+   | `MIRA_AI_PROVIDER` | `none` (ou `anthropic` + `ANTHROPIC_API_KEY`) |
+
+5. Clique em **Deploy**. Em 1–2 minutos aparece o link, algo como `https://mira-xxxx.vercel.app`.
+6. No Supabase: **Authentication › URL Configuration › Site URL** = o link da Vercel.
+
+O link é público, mas tudo exige login, e cada terapeuta só vê os próprios dados. Cada novo merge no `main` atualiza o site automaticamente.
+
+## 9. Instalar como aplicativo (PWA)
+
+Abra o link do MIRA e:
+
+- **Computador (Chrome ou Edge):** clique em **Instalar app** no menu lateral do MIRA, ou no ícone de instalar na barra de endereço. O MIRA abre em janela própria e ganha atalho no menu/área de trabalho.
+- **Android (Chrome):** toque em **Instalar app** no topo da tela ou em ⋮ › **Instalar app**.
+- **iPhone/iPad (Safari):** toque em **Compartilhar** (quadrado com seta) › **Adicionar à Tela de Início**.
+
+Por privacidade, o aplicativo instalado **não guarda dados de clientes no aparelho**: só arquivos visuais (ícones, estilos). Sem internet, aparece uma tela "Sem conexão".

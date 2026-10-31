@@ -3,6 +3,7 @@ import { pageCtx } from '@/application/page';
 import { signOutAction } from '@/app/actions/auth';
 import { BottomNav, SideNav } from '@/components/layout/nav';
 import { Logo } from '@/components/layout/logo';
+import { InstallAppButton } from '@/components/layout/pwa';
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const ctx = await pageCtx();
@@ -17,7 +18,8 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           </div>
         </Link>
         <SideNav isAdmin={ctx.user.role === 'admin'} />
-        <div className="mt-auto border-t border-sand-200 pt-4 text-sm">
+        <InstallAppButton className="mt-auto mb-3" />
+        <div className="border-t border-sand-200 pt-4 text-sm">
           <p className="truncate px-2 font-medium text-ink-700">{ctx.user.fullName}</p>
           <p className="px-2 text-xs text-ink-500">{ctx.user.role === 'admin' ? 'Administrador' : 'Terapeuta'}</p>
           <form action={signOutAction}>
@@ -38,6 +40,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             </form>
           </div>
         </header>
+        <InstallAppButton className="no-print mx-4 mt-3 md:hidden" />
         <main className="mx-auto w-full max-w-6xl px-4 pb-28 pt-6 sm:px-6 md:pb-10">{children}</main>
       </div>
       <BottomNav />

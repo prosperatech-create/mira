@@ -1,5 +1,6 @@
 import { LoginForm } from './login-form';
 import { Logo } from '@/components/layout/logo';
+import { InstallAppButton } from '@/components/layout/pwa';
 
 export const metadata = { title: 'Entrar' };
 
@@ -15,6 +16,7 @@ export default async function LoginPage({ searchParams }: PageProps<'/login'>) {
           <p className="mt-1 text-sm text-ink-500">Método Integrado de Radiestesia Aplicada</p>
         </div>
         <LoginForm next={next} />
+        <InstallAppButton className="mt-4" />
         <p className="mt-6 text-center text-xs leading-relaxed text-ink-500">
           A terapeuta decide. O pêndulo é operado pela terapeuta.
           <br />O MIRA organiza o raciocínio.
