@@ -112,7 +112,7 @@ export function buildClientReport(d: SessionReportData): ClientReport {
   );
   const summary =
     aspects.length > 0
-      ? `Nesta sessão investigamos, com o apoio da radiestesia, aspectos relacionados ao seu objetivo. ${aspects.length === 1 ? 'Um ponto' : 'Alguns pontos'} apareceram como áreas de atenção dentro do método utilizado${harmonizations.length ? ', e foram realizadas harmonizações' : ''}. Essas observações são um convite à reflexão, não conclusões definitivas.`
+      ? `Nesta sessão investigamos, com o apoio da radiestesia, aspectos relacionados ao seu objetivo. ${aspects.length === 1 ? 'Um ponto apareceu como área' : 'Alguns pontos apareceram como áreas'} de atenção dentro do método utilizado${harmonizations.length ? ', e foram realizadas harmonizações' : ''}. Essas observações são um convite à reflexão, não conclusões definitivas.`
       : 'Nesta sessão realizamos uma investigação radiestésica relacionada ao seu objetivo. Nenhum ponto específico se destacou como prioritário neste momento, o que também é um resultado válido.';
   return {
     kind: 'cliente',
